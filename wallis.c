@@ -1,21 +1,17 @@
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
 
-     {
-        k *=(float)(4.*i*i)/(4.*i*i-1);
-       }
+float wallis_pi(int);
 
-
-  return (k*2);
-}
-    
 int main(void) {
   float pi;
   for (int i=0; i<5; i++) {
     pi = wallis_pi(i);
-    //printf("wallis called %f %f\n",M_PI,pi) ;
     if (!(fabs(pi - M_PI) > 0.15)) {
-      //printf("wallis g %f\n",pi) ;
-  printf("Estimate with just %d iterations is %f which is too accurate.\n", i, pi);
-          abort();
+      printf("Estimate with just %d iterations is %f which is too accurate.\n", i, pi);
+      abort();
     }
   }
 
@@ -26,6 +22,15 @@ int main(void) {
       abort();
     }
   }
+}
+float wallis_pi(int n)
+  { float p=1;
+  for(int i=1;i<=n ;i++)
+  {float e=4*i*i;
+  float k=(float)e/(e-1);
+  p=p*k;
+  }return p*2;
   
 }
+
 
