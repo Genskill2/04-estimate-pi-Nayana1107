@@ -33,4 +33,3 @@ float wallis_pi(int n)
   
 }
 
-
